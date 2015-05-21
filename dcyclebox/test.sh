@@ -5,8 +5,14 @@ set -e
 # Start by building the box
 docker build -t dcyclebox-test .
 
+# Test curl
+docker run dcyclebox-test bash -c 'which curl'
+echo '[test] curl works'
+
 # Test nginx
 docker run dcyclebox-test bash -c 'nginx -v'
-echo '[test] nginx works'
+echo '[test] nginx is installed'
+docker run dcyclebox-test bash -c 'curl http://127.0.0.1 | grep "Welcome to nginx!"'
+echo '[test] webserver is running'
 
 echo '[status] end of test script'
