@@ -1,20 +1,13 @@
-Dcyclebox
------
+#Source code for Dcyclebox website
 
-The goal of this project is
+## Based on Jekyll+Bootstrap
 
- * to provide a **minimal set of Docker tools** to add to Drupal modules and Drupal websites, for a development-stage-production workflow.
- * to provide a working example of what a Docker-based workflow might look like.
- * to provide a lot of commenting and documentation to get a working understanding of Docker and Drupal.
+This website is based on [the Jekyll version of Bootstrap Clean Blog](https://github.com/IronSummitMedia/startbootstrap-clean-blog-jekyll).
 
-Development status
------
+## License
 
-This project is experimental and in very preliminary stage of development. **Do not use it yet**. If you are interested in Docker-Drupal integration, you can see the [alberto56/docker-drupal](https://github.com/alberto56/docker-drupal) project on GitHub. The difference between that project and Dcyclebox is that Dcyclebox is aimed to be more streamlined and more documented, and generally easier to approach for those new to Docker.
+This entire site is open-source. You must attribute ownership of the original material to [Dcycle](http://dcycle.com).
 
-Test status
------
+## The live site
 
-This project is tested by the awesome [Circle CI](https://circleci.com/) continuous integration platform.
-
-Branch 8.x: [![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/8.x.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/8.x)
+The live site can be seen at [box.dcycle.com](http://box.dcycle.com).

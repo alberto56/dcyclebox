@@ -1,0 +1,19 @@
+from nginx
+
+# install Jekyll
+RUN apt-get update
+# build-essential includes make which is required to install jekyll
+RUN apt-get install build-essential -y
+# install ruby so we can install jekyll on top of it.
+RUN apt-get install ruby1.9.1-dev -y
+# V is verbose, just to reassure folks that this takes times
+RUN gem install jekyll -V
+# see https://github.com/jekyll/jekyll/issues/2327
+RUN gem install execjs
+RUN gem install therubyracer
+
+RUN mkdir -p /usr/share/site/_site
+RUN rm -rf /usr/share/nginx/html/
+RUN ln -s ../site/_site /usr/share/nginx/html
+
+expose 80
