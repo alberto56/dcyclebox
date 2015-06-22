@@ -1,8 +1,8 @@
 # propagate errors in the script
 set -e
-
-echo '[info] Start of script ./tests/run.sh'
+echo -e "[  >>] Start of script $0"
 
 ./tests/lib/test-jekyll.sh
+./tests/lib/test-drupal7module.sh
 
-echo '[info] End of script ./tests/run.sh'
+echo -e "[<<  ] End of script $0"

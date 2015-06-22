@@ -1,3 +1,4 @@
+echo -e "[  >>] Start of script $0"
 echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * "
 echo -e "DCYCLE deploy.sh"
 echo -e "See http://box.dcycle.com for instructions and"
@@ -8,17 +9,16 @@ echo -e "* * * * * * * * * * * * * * * * * * * * * * * * \n"
 # Make sure errors propagate throughout the script
 set -e
 
-$(dirname $0)/files/preflight.sh
+$(dirname $0)/lib/preflight.sh
 
 if [ "$#" -eq "0" ]
   then
+    echo 'aaaaaaa'
     cat './dcycle/readme/deploy.txt'
 else
-  while getopts ":p:e:n:" opt; do
+  while getopts ":p:n:" opt; do
     case $opt in
       p) PORT="$OPTARG";
-      ;;
-      e) ENV="$OPTARG";
       ;;
       n) NAME="$OPTARG";
       ;;
@@ -26,6 +26,8 @@ else
       ;;
     esac
   done
+
+  ENV='dev'
 
   if [ -z "$PORT" ]; then echo "[error] The argument -p is required. Use -p 80 if you're not sure what to use."; exit 1; fi
   if [ -z "$ENV" ]; then
@@ -55,10 +57,11 @@ else
   echo -e "[info] Creating _site directory if it does not exist"
   mkdir -p _site
   echo -e "[info] Starting build"
-  ./dcycle/files/build-$ENV.sh $PORT $PROJECTNAME
+  ./dcycle/lib/build-$ENV.sh $PORT $PROJECTNAME
 fi
 
 echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * "
 echo -e "DCYCLE deploy.sh"
 echo -e "end of script."
 echo -e "* * * * * * * * * * * * * * * * * * * * * * * * \n"
+echo -e "[<<  ] End of script $0"

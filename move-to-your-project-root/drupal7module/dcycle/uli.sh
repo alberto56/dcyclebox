@@ -1,3 +1,4 @@
+echo -e "[  >>] Start of script $0"
 #!/bin/bash
 if [ "$#" -ne  "1" ]
   then
@@ -14,3 +15,4 @@ if [ "$#" -ne  "1" ]
 else
   docker exec $1 bash -c 'cd /srv/drupal/www && drush uli'
 fi
+echo -e "[<<  ] End of script $0"

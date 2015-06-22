@@ -1,20 +1,15 @@
 Dcyclebox
 -----
 
-The goal of this project is
+**THIS PROJECT IS UNDER DEVELOPMENT; PLEASE DO NOT USE IT YET UNLESS YOU WANT TO PARTICIPATE IN ITS DEVELOPMENT**
 
- * to provide a **minimal set of Docker tools** to add to Drupal modules and Drupal websites, for a development-stage-production workflow.
- * to provide a working example of what a Docker-based workflow might look like.
- * to provide a lot of commenting and documentation to get a working understanding of Docker and Drupal.
+The goal of this project is to provide a **minimal set of Docker tools** to develop Jekyll sites, and Drupal 7 & 8 modules and sites.
 
-Development status
------
-
-This project is experimental and in very preliminary stage of development. **Do not use it yet**. If you are interested in Docker-Drupal integration, you can see the [alberto56/docker-drupal](https://github.com/alberto56/docker-drupal) project on GitHub. The difference between that project and Dcyclebox is that Dcyclebox is aimed to be more streamlined and more documented, and generally easier to approach for those new to Docker.
+Please see [box.dcycle.com](http://box.dcycle.com) for instructions.
 
 Test status
 -----
 
-This project is tested by the awesome [Circle CI](https://circleci.com/) continuous integration platform.
+This project is tested on [Circle CI](https://circleci.com/).
 
-Branch 8.x: [![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/8.x.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/8.x)
+[![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master)

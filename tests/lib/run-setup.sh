@@ -1,8 +1,8 @@
 # propagate errors in the script
 set -e
 
-echo '[info] Start of script ./tests/lib/run-setup.sh'
+echo -e "[  >>] Start of script $0"
 
 ./tests/lib/delete-tmp-files.sh
 
-echo '[info] End of script ./tests/lib/run-setup.sh'
+echo -e "[<<  ] End of script $0"

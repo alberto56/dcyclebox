@@ -2,6 +2,9 @@ dependencies:
   pre:
     - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.6.0-circleci'; chmod 0755 /usr/bin/docker; true
     - sudo service docker start
+    # See http://stackoverflow.com/questions/30489240
+    # This will be changed to just require "docker", when Circle migrates its official
+    # Docker script to 1.6; We need 1.6 because we are using Docker's -f functionality.
 
 test:
   override:

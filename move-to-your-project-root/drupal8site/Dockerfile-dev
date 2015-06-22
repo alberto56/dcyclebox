@@ -1,7 +1,0 @@
-# See https://github.com/alberto56/docker-drupal
-FROM f0d58de87ae6
-# FROM alberto56/docker-drupal:8.0.x-dev-1.2-8.0.0-beta10
-
-RUN echo ''
-RUN echo 'To log into this environment, please call ./scripts/uli.sh'
-RUN echo ''
