@@ -8,6 +8,8 @@ header-img: "img/dcyclebox.png"
 Downloads and issues
 -----
 
+**THIS PROJECT IS UNDER DEVELOPMENT; PLEASE DO NOT USE IT YET UNLESS YOU WANT TO PARTICIPATE IN ITS DEVELOPMENT**
+
 [You can download the project, fork it, and consult the issue on GitHub](https://github.com/dcycleproject/dcyclebox).
 
 Introduction
@@ -50,12 +52,22 @@ Step 2: copy the required files to your project root
 
 This project contains a folder called `copy-to-your-project`, with several subfolders:
 
- * `drupal-8-module-development`
- * `drupal-7-site-development`
+ * `drupal8module`
+ * `drupal7site`
  * ...
 
 Find the project type that best suits what you are working on, and copy the contents of that folder to the root of your project.
 
 **For example, if you are developing a Drupal 8 module, copy the contents of `drupal-8-module-development` to the root of your module**.
 
+About data persistence
+-----
 
+Data persistence [is not yet supported](https://github.com/dcycleproject/dcyclebox/issues/2).
+
+Test status
+-----
+
+This project is tested on [Circle CI](https://circleci.com/).
+
+[![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master)
