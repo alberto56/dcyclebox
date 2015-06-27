@@ -21,6 +21,11 @@ Usage
   Deploys your project so that it is available on port 1234 of the host. If the port
   is already allocated you will get the error message
 
+-e dev|prod
+
+  Assumed "dev": an environment type for this container. Data will be persistent for
+  production environments.
+
 -n
 
   if -n is not set or not set to a valid value, we will assume "normal".

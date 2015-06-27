@@ -11,11 +11,30 @@ if [ "$(dirname $0)" != "./dcycle/lib" ];then
   exit 1;
 fi
 
-if [ ! -f ./Dockerfile-dcycle-drupal8module ];then
-  echo -e "[error] Dockerfile-dcycle-drupal8module must exist. Please make sure that you correctly"
+if [ ! -f ./Dockerfile-dcycle-drupal8site ];then
+  echo -e "[error] Dockerfile-dcycle-drupal8site must exist. Please make sure that you correctly"
   echo -e "        installed "
   echo -e "        the dcycle scripts on your project, by copying the dcycle folder, and"
   echo -e "        Dockerfile, etc. to your project root."
+  exit 1;
+fi
+
+if [ ! -f ./drupal/index.php ];then
+  echo -e "[error] Please make sure your git repo contains a folder called Drupal, as"
+  echo -e "        described in _An approach to code-driven development in Drupal 8_"
+  echo -e "        at http://dcycleproject.org/blog/68."
+  exit 1;
+fi
+
+if [ ! -f ./Dcycle-settings.sh ];then
+  echo -e "[error] Please make you have a file in your git root called Dcycle-settings.sh"
+  echo -e "        which should contain:"
+  echo -e ""
+  echo -e "        DCYCLE_SITE_DEPLOYMENT_MODULE=mysite_deploy"
+  echo -e ""
+  echo -e "        where mysite_deploy is the name of your site deployment module as"
+  echo -e "        described in _An approach to code-driven development in Drupal 8_"
+  echo -e "        at http://dcycleproject.org/blog/68."
   exit 1;
 fi
 
