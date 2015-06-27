@@ -23,6 +23,8 @@ This project attempts to provide an end-to-end Docker workflow for Drupal or Jek
  * your continuous integration environment is slightly different from your development environment, and this causes issues.
  * you are interested in how Docker might be used for deploying production sites.
 
+**To get a feel for how this might be used, see [this Drupal 8 project](https://github.com/alberto56/dcyclebox_drupal8site_example) which contains steps to demo in its README**.
+
 The philosophy
 -----
 
