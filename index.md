@@ -63,7 +63,9 @@ Find the project type that best suits what you are working on, and copy the cont
 About data persistence
 -----
 
-Data persistence [is not yet supported](https://github.com/dcycleproject/dcyclebox/issues/2).
+Data persistence is now supported in Drupal 8 sites and can be demonstrated by following the steps in the README of [this project](https://github.com/alberto56/dcyclebox_drupal8site_example).
+
+For Drupal 7 data persistence, see [this issue](https://github.com/dcycleproject/dcyclebox/issues/2).
 
 Test status
 -----

@@ -33,3 +33,11 @@ Usage
         be stored outside the container. You may be asked to specify more information
         about where to store this information if it applies to your container. No
         development tools will be added to your container, and security will be tighter.
+
+-n
+
+  if -n is not set or not set to a valid value, we will assume "normal".
+
+  This string will be appended to the container for easier management; for example tests
+  might append a specific name like 'test14822' so that they can easily delete those
+  containers when tearing down the test.
