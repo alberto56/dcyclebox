@@ -58,7 +58,7 @@ This project contains a folder called `copy-to-your-project`, with several subfo
 
 Find the project type that best suits what you are working on, and copy the contents of that folder to the root of your project.
 
-**For example, if you are developing a Drupal 8 module, copy the contents of `drupal-8-module-development` to the root of your module**.
+**For example, if you are developing a Drupal 8 module, copy the contents of `drupal8module` to the root of your module**.
 
 About data persistence
 -----
