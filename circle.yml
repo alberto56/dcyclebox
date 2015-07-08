@@ -8,4 +8,11 @@ dependencies:
 
 test:
   override:
-    - ./tests/run.sh
+    # - ./tests/run.sh
+    - echo 'hello'
+
+deployment:
+  production:
+    branch: develop
+    commands:
+      - ./scripts/ci-success.sh
