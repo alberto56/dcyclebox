@@ -9,3 +9,9 @@ dependencies:
 test:
   override:
     - ./tests/run.sh
+
+deployment:
+  production:
+    branch: develop
+    commands:
+      - ./scripts/ci-success.sh
