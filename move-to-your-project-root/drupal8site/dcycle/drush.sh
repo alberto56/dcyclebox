@@ -13,5 +13,6 @@ if [ "$#" -ne  "2" ]
     echo "./scripts/drush.sh xyz123 'uli'"
     docker ps
 else
+  echo -e "[info] Running exec will cause failures on certain CI servers including CircleCI"
   docker exec $1 bash -c "cd /srv/drupal/www && drush $2"
 fi

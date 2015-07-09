@@ -12,5 +12,6 @@ if [ "$#" -ne  "1" ]
     echo "./scripts/uli.sh xyz123"
     docker ps
 else
+  echo -e "[info] Running exec will cause failures on certain CI servers including CircleCI"
   docker exec $1 bash -c 'cd /srv/drupal/www && drush config-export deploy -y'
 fi
