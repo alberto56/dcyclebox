@@ -14,3 +14,5 @@ RUN cd ./srv/drupal/www && /usr/bin/drush --uri=http://127.0.0.1 test-run "Reali
 # of metrics, not enforce adherence. Note that we are explicitly checking for *.module
 # files because of https://www.drupal.org/node/2316653
 RUN cd ./srv/drupal/www && /usr/bin/drush coder --minor sites/all/modules/realistic_dummy_content sites/all/modules/realistic_dummy_content/*.module sites/all/modules/realistic_dummy_content/api/*.module || true
+
+ADD . /srv/drupal/www/sites/all/modules/mymodule/

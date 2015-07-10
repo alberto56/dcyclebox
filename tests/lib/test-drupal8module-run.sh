@@ -14,7 +14,7 @@ cd ./tests/tmp/drupal8module
 echo '[pass] Calling ./dcycle/deploy.sh with no arguments prints help'
 
 echo "[info] About to run the deploy script on port $PORT for test id $TESTID"
-./dcycle/deploy.sh -p$PORT -n $TESTID
+./dcycle/deploy.sh -p$PORT -n $TESTID -etest
 echo "[info] About to make sure our module is available in the container for D8"
 ./dcycle/drush.sh $(./dcycle/lib/container.sh drupal8module-dev-$TESTID-dcycle-drupal8module) pml|grep 'mymodule'
 echo "[pass] Module mymodule is available in the Drupal database"
