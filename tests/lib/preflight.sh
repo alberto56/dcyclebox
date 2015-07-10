@@ -1,4 +1,4 @@
-echo -e "[  >>] Start of script $0"
+echo -e "[  >>] Start of script $0 (from $(pwd))"
 # propagate errors in the script
 set -e
 

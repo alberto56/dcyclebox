@@ -1,5 +1,5 @@
 set -e
-echo -e "[  >>] Start of script $0"
+echo -e "[  >>] Start of script $0 (from $(pwd))"
 START=$(date +%s)
 
 ./tests/lib/preflight.sh
