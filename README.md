@@ -1,8 +1,6 @@
 Dcyclebox
 -----
 
-**THIS PROJECT IS UNDER DEVELOPMENT; PLEASE DO NOT USE IT YET UNLESS YOU WANT TO PARTICIPATE IN ITS DEVELOPMENT**
-
 The goal of this project is to provide a **minimal set of Docker tools** to develop Jekyll sites, and Drupal 7 & 8 modules and sites.
 
 Please see [box.dcycle.com](http://box.dcycle.com) for instructions.
@@ -10,6 +8,8 @@ Please see [box.dcycle.com](http://box.dcycle.com) for instructions.
 Test status
 -----
 
-This project is tested on [Circle CI](https://circleci.com/).
+This project is tested and continually integrated using [Circle CI](https://circleci.com/): new development is done on the `develop` branch, and when tests pass, the code is moved to master by Circle CI.
 
-[![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master)
+`develop`: [![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/develop)
+
+`master`: [![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master)
