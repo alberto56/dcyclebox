@@ -1,6 +1,6 @@
 # propagate errors in the script
 set -e
-echo -e "[  >>] Start of script $0"
+echo -e "[  >>] Start of script $0 (from $(pwd))"
 
 ./tests/lib/test-jekyll.sh
 ./tests/lib/test-drupal7module.sh

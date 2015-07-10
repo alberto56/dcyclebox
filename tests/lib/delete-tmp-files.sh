@@ -1,7 +1,7 @@
 # propagate errors in the script
 set -e
 
-echo -e "[  >>] Start of script $0"
+echo -e "[  >>] Start of script $0 (from $(pwd))"
 
 rm -rf ./tests/tmp
 mkdir ./tests/tmp
