@@ -12,6 +12,6 @@ cd ./tests/tmp/jekyll
 echo '[pass] Calling ./dcycle/deploy.sh with no arguments prints help'
 
 echo "[info] About to run the deploy script on port $PORT for test id $TESTID"
-./dcycle/deploy.sh -p$PORT -n $TESTID -etest
+./dcycle/deploy.sh -p$PORT -n$TESTID -etest
 
 echo -e "[<<  ] End of script $0"

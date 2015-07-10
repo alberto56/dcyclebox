@@ -34,3 +34,6 @@ RUN apachectl restart
 ADD ./dcycle/docker-files/my.cnf /etc/my.cnf
 
 ADD . /var/www/html/
+
+RUN cd /var/www/html && drush pml|grep 'mymodule'
+RUN grep -i "DocumentRoot" /etc/httpd/conf/httpd.conf

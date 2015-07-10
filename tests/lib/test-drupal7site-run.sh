@@ -19,7 +19,4 @@ echo "[info] About to run the deploy script on port $PORT for test id $TESTID"
 ./dcycle/deploy.sh -p$PORT -n $TESTID -etest
 echo "[info] About to make sure our module is available in the container"
 
-docker run drupal7site-dev-$TESTID-dcycle-drupal7site bash -c 'grep -i "DocumentRoot" /etc/httpd/conf/httpd.conf'
-echo "[pass] httpdconf is valid"
-
 echo -e "[<<  ] End of script $0"
