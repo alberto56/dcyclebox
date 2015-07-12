@@ -72,6 +72,8 @@ For Drupal 7 data persistence, see [this issue](https://github.com/dcycleproject
 Test status
 -----
 
-This project is tested on [Circle CI](https://circleci.com/).
+This project is tested on [Circle CI](https://circleci.com/). Development is done on the `develop` branch, and changes are merged into master, and the version number is incremented by one, if tests pass.
 
-[![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master)
+Develop branch: [![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/develop.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/develop)
+
+Master: [![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master)
