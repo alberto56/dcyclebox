@@ -1,0 +1,18 @@
+# This file is meant to be copied to your project root.
+# Change mymodule to your module name, and, and comment out the sections which
+# do not apply to your module.
+
+FROM dcycle/dcyclebox-drupal8:1.0
+
+ADD . ./srv/drupal/www/modules/mymodule/
+
+# The following issues are preventing us from running PHPUnit tests in the same run-tests.sh command as above:
+#  * https://www.drupal.org/node/2189345#comment-9923124
+#  * https://www.drupal.org/node/2488870
+
+# Unit tests. Comment this out if you do not define unit tests
+RUN cd /srv/drupal/www && core/vendor/phpunit/phpunit/phpunit --bootstrap ./core/tests/bootstrap.php modules/mymodule/api/tests/src/Unit
+
+# Tests requiring database and a webserver. Comment this out if you do not
+# have this type of test.
+RUN cd /srv/drupal/www && php ./core/scripts/run-tests.sh --verbose --php /usr/bin/php --url http://127.0.0.1/ mymodule
