@@ -1,0 +1,17 @@
+# See https://github.com/alberto56/docker-drupal
+FROM alberto56/docker-drupal:8.0.x-dev-1.2-8.0.0-beta10
+
+# See http://dcycleproject.org/blog/68/approach-code-driven-development-drupal-8
+RUN cd /srv/drupal/www && echo '$'"config_directories['deploy'] = '../deploy';" >> sites/default/settings.php
+
+ADD ./dcycle/container-scripts /srv/drupal/scripts/
+ADD ./Dcycle-settings.sh /srv/drupal/scripts/Dcycle-settings.sh
+ADD ./drupal/modules /srv/drupal/www/modules/
+ADD ./drupal/themes /srv/drupal/www/themes/
+ADD ./deploy /srv/drupal/deploy/
+
+RUN cd ./srv/drupal/scripts && ./setup-initial.sh
+
+RUN echo ''
+RUN echo 'To log into this environment, please call ./scripts/uli.sh'
+RUN echo ''
