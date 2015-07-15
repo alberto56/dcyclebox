@@ -14,7 +14,7 @@ cd ./tests/tmp/drupal8module
 echo '[pass] Calling ./dcycle/deploy.sh with no arguments prints help'
 
 echo "[info] About to run the deploy script on port $PORT for test id $TESTID"
-./dcycle/deploy.sh -p$PORT -n$TESTID -etest
+./dcycle/deploy.sh -p$PORT -n$TESTID -einternaltest
 
 echo "[pass] Module mymodule is available in the Drupal database"
 

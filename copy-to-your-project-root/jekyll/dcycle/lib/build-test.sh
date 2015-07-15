@@ -6,6 +6,6 @@ echo -e "[  >>] Start of script $0 (from $(pwd))"
 PORT=$1
 PROJECTNAME=$2
 
-docker build -f="Dcycle-Dockerfile-jekyll-test" -t $PROJECTNAME-jekyll-test .
+docker build -f="Dcycle-Dockerfile-jekyll-internaltest" -t $PROJECTNAME-jekyll-internaltest .
 
 echo -e "[<<  ] End of script $0"
