@@ -1,6 +1,0 @@
-from jekyll/jekyll:latest
-
-ADD . /srv/jekyll/
-
-RUN chown -R jekyll /srv/jekyll
-RUN cd /srv/jekyll && ls -lah && jekyll build .

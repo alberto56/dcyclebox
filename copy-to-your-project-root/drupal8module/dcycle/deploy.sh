@@ -26,7 +26,7 @@ else
     esac
   done
 
-  if [ "$ENV" != "internaltest" ] && [ "$ENV" != "dev" ] && [ "$ENV" != "dev" ]
+  if [ "$ENV" != "internal" ] && [ "$ENV" != "dev" ] && [ "$ENV" != "dev" ]
     then
       echo -e "[info] You did not specify the -e flag as test or dev, or specified it"
       echo -e "       as an invalid value, we are assuming dev."
