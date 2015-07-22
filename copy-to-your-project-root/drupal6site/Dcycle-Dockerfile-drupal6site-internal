@@ -1,0 +1,39 @@
+# Define a complete server with a LAMP stack, clean URLs, and the right PHP settings
+# to develop a Drupal 6 site.
+# Usage:
+# (1) make sure you have docker installed (on Mac, you can install a CoreOS vagrant box
+#     which has docker pre-installed)
+# (2) run ./dcycle/deploy.sh to get a development environment.
+# (3) visit the IP address of your computer or core os vagrant box.
+# (4) start developing
+
+FROM dcycle/dcyclebox-centos-lamp:3
+MAINTAINER Albert Albala (alberto56), Dcycle Inc.
+
+# Install git
+RUN yum -y install git; yum clean all;
+
+# Install composer and drush
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+RUN composer global require drush/drush:6.6.0
+RUN ln -s /.composer/vendor/drush/drush/drush /bin/drush
+
+# Install Drupal database; no security, this is just for development
+RUN service mysqld start && echo 'create database drupal' | mysql -uroot
+
+# Install sendmail
+RUN yum -y install sendmail; yum clean all;
+
+# Install clean urls & increase memory
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/httpd/conf/httpd.conf
+RUN sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php.ini
+RUN apachectl restart
+
+# Incerase max_allowed_packets
+ADD ./dcycle/docker-files/my.cnf /etc/my.cnf
+
+ADD . /var/www/html/
+
+RUN cd /var/www/html && drush pml|grep 'mymodule'
+RUN grep -i "DocumentRoot" /etc/httpd/conf/httpd.conf
