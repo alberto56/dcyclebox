@@ -19,4 +19,16 @@ if [ ! -f ./Dcycle-Dockerfile-drupal6site ];then
   exit 1;
 fi
 
+if [ ! -f ./Dcycle-settings.sh ];then
+  echo -e "[error] Please make you have a file in your git root called Dcycle-settings.sh"
+  echo -e "        which should contain:"
+  echo -e ""
+  echo -e "        DCYCLE_SITE_DEPLOYMENT_MODULE=mysite_deploy"
+  echo -e ""
+  echo -e "        where mysite_deploy is the name of your site deployment module as"
+  echo -e "        described in _An approach to code-driven development in Drupal 8_"
+  echo -e "        at http://dcycleproject.org/blog/68."
+  exit 1;
+fi
+
 echo -e "[<<  ] End of script $0"

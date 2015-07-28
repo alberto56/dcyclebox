@@ -13,5 +13,5 @@ if [ "$#" -ne  "1" ]
     docker ps
 else
   echo -e "[info] Running exec will cause failures on certain CI servers including CircleCI"
-  docker exec $1 bash -c 'cd /var/www/html && drush uli'
+  docker exec $1 bash -c 'tail /etc/httpd/logs/error_log'
 fi

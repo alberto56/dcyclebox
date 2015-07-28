@@ -35,6 +35,18 @@ RUN apachectl restart
 ADD ./dcycle/docker-files/my.cnf /etc/my.cnf
 
 # Install Drupal
-RUN cd /var/www && drush dl drupal-6.36
-RUN mv /var/www/drupal-*/* /var/www/html/
+ADD . /var/www/html
+ADD ./dcycle/container-scripts /srv/drupal/scripts/
+ADD ./Dcycle-settings.sh /srv/drupal/scripts/Dcycle-settings.sh
+
 RUN service mysqld start && cd /var/www/html && ls -lah && drush si -y --db-url=mysql://root:@localhost/drupal
+
+# Because this is the production Dockerfile, we will want the database to be
+# persistent. The database is stored in a bunch of files at /var/lib/mysql/drupal,
+# including /var/lib/mysql/drupal/users.frm. Because these files should be persistent
+# on the host, the -v flag will be used during the docker build process, which will
+# overwrite /var/lib/mysql/drupal with whatever is on the host (which can be empty).
+# To overcome this, we will store the entre /var/lib/mysql/drupal folder in /tmp/database.
+# Later on, the script which installs the Docker container will check if a (persistent)
+# database exists, and use if it does; and use the stored db if none exists yet.
+RUN mv /var/lib/mysql/drupal /tmp/initial-database

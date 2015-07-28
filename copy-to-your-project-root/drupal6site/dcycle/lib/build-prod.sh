@@ -22,7 +22,7 @@ echo -e "       you might consider adding certain folders or files to the .docke
 echo -e "       file."
 
 # Start by building the box
-docker build -f="Dcycle-Dockerfile-drupal6site" -t $PROJECTNAME-dcycle-drupal6site .
+docker build -f="Dcycle-Dockerfile-drupal6site-prod" -t $PROJECTNAME-dcycle-drupal6site-prod .
 
 # Kill the existing sites/default/settings.php
 # sites/default/settings.php is on a volume that is shared between your host (for example
@@ -33,12 +33,14 @@ chmod -R u+w sites/default
 rm -rf sites/default/settings.php
 
 # Start a container on the selected port, make is persistent (-d), and share the current
-# code base with /var/www/html on the container.
-docker run -p $PORT:80 -d -v $(pwd):/var/www/html $PROJECTNAME-dcycle-drupal6site
+# code base with /var/www/html on the container, make sure the database is persistent
+# as well.
+docker run -p $PORT:80 -d \
+-v /data/$PROJECTNAME-dcycle-drupal6site-prod/files:/srv/drupal/www/sites/default/files \
+-v /data/$PROJECTNAME-dcycle-drupal6site-prod/database:/var/lib/mysql/drupal \
+$PROJECTNAME-dcycle-drupal6site-prod
 
-echo -e "..."
-echo -e "Please run ./dcycle/install.sh $PROJECTNAME-dcycle-drupal6site"
-echo -e "and then enable your site deployment module."
-echo -e "..."
+echo -e "[info] Running exec will cause failures on certain CI servers including CircleCI"
+docker exec $(./dcycle/lib/container.sh $PROJECTNAME-dcycle-drupal6site-prod) /bin/bash -c 'cd ./srv/drupal/scripts && ./setup.sh'
 
 echo -e "[<<  ] End of script $0"
