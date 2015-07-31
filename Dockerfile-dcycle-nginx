@@ -1,5 +1,0 @@
-from nginx:latest
-
-ADD ./_site /usr/share/nginx/html/
-
-expose 80

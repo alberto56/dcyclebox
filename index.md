@@ -1,6 +1,7 @@
 ---
 layout: page
-title: "Dcyclebox"
+# No title, because we want to use our site title, which contains the version info,
+# on our front page
 description: "A Docker-based workflow for Drupal and Jekyll development, testing, continuous integration and deployment."
 header-img: "img/dcyclebox.png"
 ---
@@ -75,3 +76,28 @@ Test status
 This project is tested on [Circle CI](https://circleci.com/).
 
 [![Circle CI](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master.svg?style=svg)](https://circleci.com/gh/dcycleproject/dcyclebox/tree/master)
+
+For developers working on the Dcyclebox project
+-----
+
+_Updating base images_
+
+If you are a developer working on the Dcyclebox project itself, and would like to update an image, here is a typical workflow:
+
+ * cd ./images/drupal8
+ * change the Dockerfile for some new feature
+ * docker build .
+ * docker tag d583c3ac45fd dcycle/dcyclebox-drupal8:x # where x is the [latest version of Dcyclebox master](https://github.com/dcycleproject/dcyclebox/blob/master/copy-to-your-project-root/drupal8site/dcycle/CHANGELOG.txt)
+ * docker push dcycle/dcyclebox-drupal8
+
+_Updating image templates_
+
+ * make sure your tag appears in https://registry.hub.docker.com/u/dcycle/dcyclebox-centos-lamp/tags/manage/
+ * cd ./copy-to-your-project-root/drupal8module
+ * Update the version of the base image.
+ * Push to the develop which will trigger tests.
+
+Troubleshooting
+-----
+
+ * For developers working on the Dcyclebox project: `Rpmdb checksum is invalid` during a build. [A fix can be found here](https://github.com/CentOS/sig-cloud-instance-images/issues/15) and entails adding `; yum clean all` at the end of every `yum` line. This can affect developers working on the CentOS image.

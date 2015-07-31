@@ -1,10 +1,10 @@
 # Site settings
-title: Dcyclebox
+title: Dcyclebox 4
 header-img: img/dcyclebox.png
 email: no-monitored@dcycle.com
 description: "A Docker-based workflow for Drupal and Jekyll development, testing, continuous integration and deployment."
 baseurl: ""
-url: "http://dcyclebox.io/"
+url: "http://box.dcycle.com/"
 twitter_username: dcycleproject
 github_username:  dcycleproject
 
