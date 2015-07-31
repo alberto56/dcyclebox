@@ -1,0 +1,16 @@
+# Site settings
+title: Dcyclebox 6
+header-img: img/dcyclebox.png
+email: no-monitored@dcycle.com
+description: "A Docker-based workflow for Drupal and Jekyll development, testing, continuous integration and deployment."
+baseurl: ""
+url: "http://dcyclebox.io/"
+twitter_username: dcycleproject
+github_username:  dcycleproject
+
+# Build settings
+markdown: kramdown
+highlighter: pygments
+permalink: pretty
+paginate: 99
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
