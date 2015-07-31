@@ -32,15 +32,19 @@ else
       echo -e "       as an invalid value, we are assuming dev."
       ENV='dev'
   fi
+  if [ -z "$NAME" ]; then
+    echo -e "[notice] The argument -n was not set, so we are assuming 'normal'"
+    NAME=normal;
+  fi
 
-  PROJECTNAME=$(basename $(pwd))-$ENV-$NAME
+  DIRNAME=$(basename $(pwd))
+
+  PROJECTNAME=$DIRNAME-$ENV-$NAME
 
   echo -e "[info] The project name has been determined based on the directory name of"
   echo -e "       your project and environment type:"
   echo -e "       $PROJECTNAME"
 
-  echo -e "[info] Creating _site directory if it does not exist"
-  mkdir -p _site
   echo -e "[info] Starting build"
   ./dcycle/lib/build-$ENV.sh $PORT $PROJECTNAME
 fi

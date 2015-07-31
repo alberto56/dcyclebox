@@ -1,3 +1,4 @@
+START=$(date +%s)
 echo -e "[  >>] Start of script $0 (from $(pwd))"
 echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * "
 echo -e "DCYCLE deploy.sh"
@@ -15,21 +16,23 @@ if [ "$#" -eq "0" ]
   then
     cat './dcycle/readme/deploy.txt'
 else
-  while getopts ":p:n:" opt; do
+  while getopts ":p:n:e:" opt; do
     case $opt in
       p) PORT="$OPTARG";
       ;;
       n) NAME="$OPTARG";
+      ;;
+      e) ENV="$OPTARG";
       ;;
       \?) echo "Invalid option -$OPTARG" >&2
       ;;
     esac
   done
 
-  if [ "$ENV" != "test" ] && [ "$ENV" != "dev" ]
+  if [ "$ENV" != "prod" ] && [ "$ENV" != "dev" ] && [ "$ENV" != "internal" ]
     then
-      echo -e "[info] You did not specify the -e flag as test or dev, or specified it"
-      echo -e "       as an invalid value, we are assuming dev."
+      echo -e "[info] You did not specify the -e flag as prod or dev or internal, or"
+      echo -e "       specified it as an invalid value, we are assuming dev."
       ENV='dev'
   fi
   if [ -z "$NAME" ]; then
@@ -42,9 +45,6 @@ else
   echo -e "[info] The project name has been determined based on the directory name of"
   echo -e "       your project and environment type:"
   echo -e "       $PROJECTNAME"
-
-  echo -e "[info] Creating _site directory if it does not exist"
-  mkdir -p _site
   echo -e "[info] Starting build"
   ./dcycle/lib/build-$ENV.sh $PORT $PROJECTNAME
 fi
@@ -53,4 +53,5 @@ echo -e "\n* * * * * * * * * * * * * * * * * * * * * * * * "
 echo -e "DCYCLE deploy.sh"
 echo -e "end of script."
 echo -e "* * * * * * * * * * * * * * * * * * * * * * * * \n"
-echo -e "[<<  ] End of script $0"
+SECONDS=`expr $(date +%s) - $START`
+echo -e "[<<  ] End of script $0 in $SECONDS seconds"

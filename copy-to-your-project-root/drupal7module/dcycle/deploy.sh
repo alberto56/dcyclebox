@@ -34,6 +34,10 @@ else
       echo -e "       as an invalid value, we are assuming dev."
       ENV='dev'
   fi
+  if [ -z "$NAME" ]; then
+    echo -e "[notice] The argument -n was not set, so we are assuming 'normal'"
+    NAME=normal;
+  fi
 
   PROJECTNAME=$(basename $(pwd))-$ENV-$NAME
 

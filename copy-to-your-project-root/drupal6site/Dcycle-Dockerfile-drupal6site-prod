@@ -1,0 +1,52 @@
+# Define a complete server with a LAMP stack, clean URLs, and the right PHP settings
+# to develop a Drupal 6 site.
+# Usage:
+# (1) make sure you have docker installed (on Mac, you can install a CoreOS vagrant box
+#     which has docker pre-installed)
+# (2) run ./dcycle/deploy.sh to get a development environment.
+# (3) visit the IP address of your computer or core os vagrant box.
+# (4) start developing
+
+FROM dcycle/dcyclebox-centos-lamp:3
+MAINTAINER Albert Albala (alberto56), Dcycle Inc.
+
+# Install git
+RUN yum -y install git; yum clean all;
+
+# Install composer and drush
+RUN curl -sS https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+RUN composer global require drush/drush:6.6.0
+RUN ln -s ~/.composer/vendor/drush/drush/drush /bin/drush
+
+# Install Drupal database; no security, this is just for development
+RUN service mysqld start && echo 'create database drupal' | mysql -uroot
+
+# Install tar & sendmail
+RUN yum install tar -y;yum clean all
+RUN yum -y install sendmail; yum clean all;
+
+# Install clean urls & increase memory
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/httpd/conf/httpd.conf
+RUN sed -i 's/memory_limit = 128M/memory_limit = 512M/g' /etc/php.ini
+RUN apachectl restart
+
+# Incerase max_allowed_packets
+ADD ./dcycle/docker-files/my.cnf /etc/my.cnf
+
+# Install Drupal
+ADD . /var/www/html
+ADD ./dcycle/container-scripts /srv/drupal/scripts/
+ADD ./Dcycle-settings.sh /srv/drupal/scripts/Dcycle-settings.sh
+
+RUN service mysqld start && cd /var/www/html && ls -lah && drush si -y --db-url=mysql://root:@localhost/drupal
+
+# Because this is the production Dockerfile, we will want the database to be
+# persistent. The database is stored in a bunch of files at /var/lib/mysql/drupal,
+# including /var/lib/mysql/drupal/users.frm. Because these files should be persistent
+# on the host, the -v flag will be used during the docker build process, which will
+# overwrite /var/lib/mysql/drupal with whatever is on the host (which can be empty).
+# To overcome this, we will store the entre /var/lib/mysql/drupal folder in /tmp/database.
+# Later on, the script which installs the Docker container will check if a (persistent)
+# database exists, and use if it does; and use the stored db if none exists yet.
+RUN mv /var/lib/mysql/drupal /tmp/initial-database
