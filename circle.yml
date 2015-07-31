@@ -8,4 +8,5 @@ dependencies:
 
 test:
   override:
-    - ./tests/run.sh
+    - docker build -f="Dcycle-Dockerfile-nginx" .
+    - docker build -f="Dcycle-Dockerfile-jekyll" .
