@@ -1,5 +1,5 @@
 # Site settings
-title: Dcyclebox 4
+title: Dcyclebox 6
 header-img: img/dcyclebox.png
 email: no-monitored@dcycle.com
 description: "A Docker-based workflow for Drupal and Jekyll development, testing, continuous integration and deployment."

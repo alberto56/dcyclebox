@@ -1,0 +1,4 @@
+drupal8-1.0
+-----
+
+Initial version, use 8.0.0-beta11 and SQLite

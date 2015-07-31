@@ -1,0 +1,2 @@
+# See https://github.com/alberto56/docker-drupal
+FROM alberto56/docker-drupal:7.x-dev-2.0
