@@ -10,7 +10,6 @@ cp -r ./copy-to-your-project-root/drupal7site ./tests/tmp/.
 cp -r ./tests/lib/files/drupal7site/* ./tests/tmp/drupal7site/.
 cd ./tests/tmp/drupal7site
 echo -e '[info] ./tests/tmp/drupal7site should now contain bare-bones d7 site structure for testing'
-ls -lah
 
 ./dcycle/deploy.sh | grep 'prints this help'
 echo '[pass] Calling ./dcycle/deploy.sh with no arguments prints help'

@@ -29,11 +29,15 @@ else
     esac
   done
 
-  if [ "$ENV" != "prod" ] && [ "$ENV" != "dev" ]
+  if [ "$ENV" != "prod" ] && [ "$ENV" != "dev" ] && [ "$ENV" != "internal" ]
     then
-      echo -e "[info] You did not specify the -e flag as prod or dev, or specified it"
-      echo -e "       as an invalid value, we are assuming dev."
+      echo -e "[info] You did not specify the -e flag as prod or dev or internal, or"
+      echo -e "       specified it as an invalid value, we are assuming dev."
       ENV='dev'
+  fi
+  if [ -z "$NAME" ]; then
+    echo -e "[notice] The argument -n was not set, so we are assuming 'normal'"
+    NAME=normal;
   fi
 
   PROJECTNAME=$(basename $(pwd))-$ENV-$NAME

@@ -6,7 +6,11 @@ echo -e "[  >>] Start of script $0 (from $(pwd))"
 TESTID=$(./tests/lib/util/test-id.sh)
 CONTAINERS=$(./tests/lib/util/container.sh $TESTID)
 
-echo "[info] found containers to delete: $CONTAINERS"
+echo -e "[INFO] Looking for container(s) which contain the following string:"
+echo -e "       $TESTID"
+
+echo -e "[INFO] Found container(s) to delete:"
+echo -e "       $CONTAINERS"
 
 docker kill $CONTAINERS
 

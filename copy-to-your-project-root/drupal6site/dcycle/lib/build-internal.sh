@@ -19,21 +19,8 @@ echo -e "[  >>] Start of script $0 (from $(pwd))"
 # Start by building the box
 docker build -f="Dcycle-Dockerfile-drupal6site-internal" -t $PROJECTNAME-dcycle-drupal6site-internal .
 
-# Kill the existing sites/default/settings.php
-# sites/default/settings.php is on a volume that is shared between your host (for example
-# your coreOS box), and the docker container. This is because the entire Drupal codebase
-# is shared.
-echo -e "[info] About to chmod sites/default from $(pwd)"
-chmod -R u+w sites/default
-rm -rf sites/default/settings.php
-
 # Start a container on the selected port, make is persistent (-d), and share the current
 # code base with /var/www/html on the container.
 docker run -p $PORT:80 -d $PROJECTNAME-dcycle-drupal6site-internal
-
-echo -e "..."
-echo -e "Please run ./dcycle/install.sh $PROJECTNAME-dcycle-drupal6site-internal"
-echo -e "and then enable your site deployment module."
-echo -e "..."
 
 echo -e "[<<  ] End of script $0"
