@@ -9,4 +9,5 @@ dependencies:
 test:
   override:
     - docker build -f="Dcycle-Dockerfile-jekyll-internaltest" .
+    - mkdir _site
     - docker build -f="Dcycle-Dockerfile-nginx" .
