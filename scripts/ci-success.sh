@@ -17,7 +17,8 @@ if [ $(git rev-parse --abbrev-ref HEAD) == 'develop' ] ; then
 
   git checkout gh-pages
   git pull origin gh-pages
-  sed -i "s/^title:.*$/title: Dcyclebox $NEWVERSION/g" _config.yml
+  // See http://stackoverflow.com/questions/7573368
+  sed -i"any_symbol" "s/^title:.*$/title: Dcyclebox $NEWVERSION/g" "_config.yml"
   git commit -am "Set version number to $NEWVERSION"
   git tag "documentation-$NEWVERSION.0"
   git push origin gh-pages --tags
