@@ -1,1 +1,1 @@
-from jekyll/jekyll:pages
+from jekyll/jekyll:stable

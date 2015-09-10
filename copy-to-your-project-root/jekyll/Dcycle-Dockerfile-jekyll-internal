@@ -1,4 +1,4 @@
-from jekyll/jekyll:pages
+from jekyll/jekyll:stable
 
 ADD . /srv/jekyll/
 
