@@ -1,6 +1,2 @@
-# See https://github.com/alberto56/docker-drupal
-FROM alberto56/docker-drupal:8.0.x-dev-1.2-8.0.0-beta10
-
-RUN echo ''
-RUN echo 'To log into this environment, please call ./scripts/uli.sh'
-RUN echo ''
+# See https://box.dcycle.com/
+FROM dcycle/dcyclebox-drupal8module:7
